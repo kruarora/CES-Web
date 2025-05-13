@@ -4,200 +4,190 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico">
-    <title>CES Web</title>
+    <title>CES-Web</title>
     <style>
-        /* Basic Reset */
-        html, body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        html {
+            display: flex;
+            justify-content: safe center;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Make body take at least the full viewport height */
-        }
-
-        .container {
-            background-color: #fff;
+            font-family: Verdana, sans-serif;
+            font-size: 13pt;
+            line-height: 1.4;
             max-width: 900px;
-            width: 95%; /* Adjust width for better responsiveness */
-            margin: 20px;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-width: 500px;
+            margin: 0 auto; /* Center the body */
+            padding: 15px;
         }
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .logo {
-            font-size: 24px;
+        .heading {
+            font-size: 16pt;
             font-weight: bold;
-            color: #2c3e50;
-            text-decoration: none;
         }
 
-        .logo span {
-            color: #e74c3c; /* Highlight color */
-        }
-
-        .dev-banner {
-            background-color: #34495e;
-            color: #fff;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .navigation a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 15px;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .navigation a:hover {
-            color: #e74c3c;
-        }
-
-        .navigation a:first-child {
-            margin-left: 0;
-        }
-
-        /* Main Content */
-        .content {
-            margin-bottom: 30px;
-        }
-
-        .welcome-message {
-            font-size: 20px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .link-item {
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .link-item:last-child {
-            border-bottom: none;
-        }
-
-        .link-item a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .link-item a:hover {
-            color: #2980b9;
-        }
-
-        /* Footer */
         .footer {
-            font-size: 12px;
-            color: #777;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            text-align: center;
+            font-size: 9pt;
+            color: grey;
+            margin-top: 30px;
         }
 
-        .footer a {
-            color: #777;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .error, .field-validation-error {
+            color: red;
         }
 
-        .footer a:hover {
+        .bold {
+            font-weight: bold;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .validation-summary-valid {
+            display: none;
+        }
+
+        #devBanner {
+            background: repeating-linear-gradient(45deg, black 0 20px, yellow 20px 40px);
+            color: white;
+            padding: 0 10px;
+            text-shadow: black 0 0 3px;
+            border: 1px solid black;
+            user-select: none;
+        }
+
+        /* Card Layout Styles */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 20px; /* Space between cards */
+            padding: 20px 0; /* Padding around the container */
+            min-height: 100px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            background-color: #f9f9f9;
+            text-align: center; /* Center content within the card */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.2em;
             color: #333;
         }
 
-        .footer div {
-            margin-bottom: 5px;
+        .card p {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 0; /* Remove default bottom margin from paragraph */
         }
 
-        /* Utility Classes (keeping these) */
-        .heading { font-size: 1.5em; font-weight: bold; }
-        .error, .field-validation-error { color: #c0392b; }
-        .bold { font-weight: bold; }
-        .underline { text-decoration: underline; }
-        .italic { font-style: italic; }
-        .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .validation-summary-valid { display: none; }
+        .card a {
+            text-decoration: none;
+            color: inherit; /* Make the whole card clickable if desired, or style link specifically */
+        }
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            body {
-                font-size: 14px;
-            }
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .navigation {
-                margin-top: 10px;
-            }
-            .navigation a {
-                margin: 0 10px;
-            }
-            .dev-banner {
-                margin-top: 10px;
-            }
+        .card a:hover h3 {
+            color: red; /* Example hover effect for the title */
+        }
+
+
+        .main-nav a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff; /* Blue links */
+        }
+        .main-nav a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <a href="/" class="logo">CE<span style="color: #e74c3c">S</span> Web</a>
-            <div>
-                <span class="dev-banner">Development</span>
-            </div>
-            <nav class="navigation">
-                <a href="/">Home</a>
-                <a href="/Assembly">Assembly</a>
-                <a href="/Printouts">Printouts</a>
-                <a href="/Test">Testing</a>
-                <a href="/Quotes">Quotes</a>
-            </nav>
-        </header>
-
-        <div class="content">
-            <div class="welcome-message">Welcome to CES-Web</div>
-            <div class="link-item"><a href="/Assembly">Assembly Builder</a> - Create transformer assembly.</div>
-            <div class="link-item"><a href="/Printouts">Printouts</a> - Generate and view documentation for transformers: traveler, winding spec, clamp sheet, etc.</div>
-            <div class="link-item"><a href="/Test">Testing</a> - Record and review transformer test data. Generate testing reports for clients.</div>
-            <div class="link-item"><a href="/Quotes">Quotes</a> - Assign assemblies to Salesforce quotes.</div>
-            <div class="link-item"><a href="/Sales">Sales Winding Specs</a> - Winding spec report for sales.</div>
+    <div class="heading" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <a href="/" style="text-decoration: none; color: black">CE<span style="color: red">S</span> Web</a>
+        <span id="devBanner">Development</span>
+        <div style="font-weight: normal; font-size: 10pt;" class="main-nav">
+            <a href="/">Home</a>
+            |
+            <a href="/Assembly">Assembly</a>
+            |
+            <a href="/Printouts">Printouts</a>
+            |
+            <a href="/Test">Testing</a>
+            |
+            <a href="/Quotes">Quotes</a>
         </div>
+    </div>
+    <hr>
 
-        <footer class="footer">
-            <div>Logged in as Kru Arora</div>
-            <div><a href="/Logout">Log out</a></div>
-            <div>Request processing statistics</div>
-            <div>Build #: 253, Date: 2025-05-13 11:15</div>
-            <div>Git commit ID: fd5097e5a3e33fede5d11d837bad25ee7953a5fa</div>
-        </footer>
+    <div>Welcome to CES-Web</div>
+
+    <div class="card-container">
+        <a href="/Assembly" class="card">
+            <div>
+                <h3>Assembly Builder</h3>
+                <p>Create transformer assembly.</p>
+            </div>
+        </a>
+
+        <a href="/Printouts" class="card">
+            <div>
+                <h3>Printouts</h3>
+                <p>Generate and view documentation for transformers: traveler, winding spec, clamp sheet, etc.</p>
+            </div>
+        </a>
+
+        <a href="/Test" class="card">
+            <div>
+                <h3>Testing</h3>
+                <p>Record and review transformer test data. Generate testing reports for clients.</p>
+            </div>
+        </a>
+
+        <a href="/Quotes" class="card">
+            <div>
+                <h3>Quotes</h3>
+                <p>Assign assemblies to Salesforce quotes.</p>
+            </div>
+        </a>
+
+        <a href="/Sales" class="card">
+            <div>
+                <h3>Sales Winding Specs</h3>
+                <p>Winding spec report for sales.</p>
+            </div>
+        </a>
+    </div>
+
+    <hr style="margin-top: 30px">
+    <div class="footer">
+        <div>Logged in as Kru Arora</div>
+        <div><a href="/Logout">Log out</a></div>
+        <div>Request processing statistics</div>
+        <div>Microsoft: 404 ms</div>
+        <div>Total: 227 ms</div>
+        <div>Build #: 253, Date: 2025-05-13 11:15</div>
+        <div>Git commit ID: fd5097e5a3e33fede5d11d837bad25ee7953a5fa</div>
     </div>
 
     <script type="module">
@@ -206,23 +196,17 @@
         const buttonStates = [];
 
         const forms = document.querySelectorAll('form:not(.allow-spam)');
-        for (let form of forms)
-        {
+        for (let form of forms) {
             const formState = { submitted: false };
             formStates.push(formState);
 
-            function onFormSubmit(event)
-            {
-                if (formState.submitted)
-                {
+            function onFormSubmit(event) {
+                if (formState.submitted) {
                     event.preventDefault();
-                }
-                else
-                {
+                } else {
                     formState.submitted = true;
                     const buttons = document.querySelectorAll('input[type=submit]');
-                    for (const button of buttons)
-                    {
+                    for (const button of buttons) {
                         if (button.form !== form) continue;
                         const buttonState = { button, oldValue: button.value };
                         buttonStates.push(buttonState);
@@ -230,17 +214,14 @@
                     }
                 }
             }
-
             form.addEventListener('submit', onFormSubmit);
         }
 
-        function reset_forms()
-        {
+        function reset_forms() {
             for (const formState of formStates) formState.submitted = false;
             for (const buttonState of buttonStates) buttonState.button.value = buttonState.oldValue;
             buttonStates.length = 0;
         }
-
         addEventListener('pageshow', reset_forms);
     </script>
 </body>
